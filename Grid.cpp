@@ -7,6 +7,7 @@ Grid::Grid(int numberOfQuadrants)
 
 Quadrant Grid::getQuadrantAt(QuadrantCoordinates quadCoordinates)
 {
+	return Quadrant();
 }
 
 void Grid::calculateNewParticlePositions()

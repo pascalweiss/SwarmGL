@@ -1,11 +1,12 @@
 #pragma once
 #include "Quadrant.h"
 #include "Particle.h"
+#include <vector>
 class Grid
 {
 private:
-	Quadrant quadrantArray[][][];
-	Particle particleArray[];
+	std::vector<std::vector<std::vector<Quadrant>>> quadrantArray;
+	std::vector<Particle> particleArray;
 public:
 	Grid(int numberOfQuadrants);
 	Quadrant getQuadrantAt(QuadrantCoordinates quadCoordinates);

@@ -317,7 +317,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="InfluenceVector.cpp" />
     <ClCompile Include="KI.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Quadrant.cpp" />
+    <ClCompile Include="QuadrantCoordinates.cpp" />
     <ClCompile Include="SwarmGL.cpp" />
     <ClCompile Include="objects.cpp" />
     <ClCompile Include="objloader.cpp" />
@@ -326,11 +330,19 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="InfluenceVector.h" />
     <ClInclude Include="KI.h" />
     <ClInclude Include="objects.hpp" />
     <ClInclude Include="objloader.hpp" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="Quadrant.h" />
+    <ClInclude Include="QuadrantCoordinates.h" />
     <ClInclude Include="shader.hpp" />
     <ClInclude Include="texture.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ColorFragmentShader.fragmentshader" />
+    <None Include="NotizenTom.odt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

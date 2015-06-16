@@ -19,14 +19,17 @@ void QuadrantCoordinates::setZ()
 
 int QuadrantCoordinates::getX()
 {
+	return 1;
 }
 
 int QuadrantCoordinates::getY()
 {
+	return 2;
 }
 
 int QuadrantCoordinates::getZ()
 {
+	return 4;
 }
 
 QuadrantCoordinates::~QuadrantCoordinates(void)

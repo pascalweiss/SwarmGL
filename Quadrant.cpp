@@ -5,8 +5,10 @@ Quadrant::Quadrant(void)
 {
 }
 
-Particle[] Quadrant::getParticles()
+std::vector<Particle> Quadrant::getParticles()
 {
+	
+	return std::vector<Particle>();
 }
 
 void Quadrant::setParticles(Particle particles[])
