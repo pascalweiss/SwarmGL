@@ -56,6 +56,7 @@ void sendMVP() {
     glUniformMatrix4fv(glGetUniformLocation(programID, "P"), 1, GL_FALSE, &Projection[0][0]);
 }
 
+
 int initialize() {
     // Initialise GLFW
     // Erst mal Fenster erzeugen
@@ -63,10 +64,6 @@ int initialize() {
         fprintf(stderr, "Failed to initialize GLFW\n");
         exit(EXIT_FAILURE);
     }
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
     // Fehler werden auf stderr ausgegeben, s. o.
     glfwSetErrorCallback(error_callback);
@@ -97,9 +94,6 @@ int initialize() {
     }
     return 0;
 }
-
-
-
 
 int main(void) {
     if (initialize() != 0) {
