@@ -316,6 +316,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="KI.cpp" />
     <ClCompile Include="SwarmGL.cpp" />
     <ClCompile Include="objects.cpp" />
     <ClCompile Include="objloader.cpp" />
@@ -323,6 +325,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="KI.h" />
     <ClInclude Include="objects.hpp" />
     <ClInclude Include="objloader.hpp" />
     <ClInclude Include="shader.hpp" />
