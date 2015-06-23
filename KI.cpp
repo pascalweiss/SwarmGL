@@ -5,7 +5,6 @@
 #include "shader.hpp"
 
 
-<<<<<<< HEAD
 KI::KI(void) {
 	if (this->initialize() != 0) {
         assert(false);
@@ -21,54 +20,6 @@ KI::KI(void) {
 	this->start();
 }
 
-
-int KI::initialize() {
-    // Initialise GLFW
-    // Erst mal Fenster erzeugen
-    if (!glfwInit()) {
-        fprintf(stderr, "Failed to initialize GLFW\n");
-        exit(EXIT_FAILURE);
-    }
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    
-    // Fehler werden auf stderr ausgegeben, s. o.
-    //glfwSetErrorCallback(error_callback);
-    
-    // Open a window and create its OpenGL context
-    // glfwWindowHint vorher aufrufen, um erforderliche Resourcen festzulegen
-    window = glfwCreateWindow(1024, // Breite
-                                          768,  // Hoehe
-                                          "CG - Tutorial", // Ueberschrift
-                                          NULL,  // windowed mode
-                                          NULL); // shared window
-    
-    if (!window) {
-        glfwTerminate();
-        exit(EXIT_FAILURE);
-    }
-    
-    // Make the window's context current (wird nicht automatisch gemacht)
-    glfwMakeContextCurrent(window);
-    
-    // Initialize GLEW
-    // GLEW ermöglicht Zugriff auf OpenGL-API > 1.1
-    glewExperimental = true; // Needed for core profile
-    
-    if (glewInit() != GLEW_OK) {
-        fprintf(stderr, "Failed to initialize GLEW\n");
-        return -1;
-    }
-    return 0;
-=======
-KI::KI(void)
-{
-	//DrawStartScene();
->>>>>>> 1a6dd7074fa93fb019ebd4c7a4a37984a935a776
-}
-/*
 int KI::initialize() {
     // Initialise GLFW
     // Erst mal Fenster erzeugen
@@ -77,7 +28,6 @@ int KI::initialize() {
         exit(EXIT_FAILURE);
     }
 
-    
     // Fehler werden auf stderr ausgegeben, s. o.
     //glfwSetErrorCallback(error_callback);
     
@@ -107,7 +57,7 @@ int KI::initialize() {
     }
 	return 0;
 }
-*/
+
 void KI::start() {
 	for (;;) {
 		std::cout << "WAT";
