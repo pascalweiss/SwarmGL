@@ -1,12 +1,9 @@
 ﻿// Include standard headers
-#include <stdio.h>
-#include <stdlib.h>
-#include <vector>
 
-////////////////////////////////////neu, nicht löschen
+
 #include "KI.h"
-////////////////////////////////////
 
+<<<<<<< HEAD
 
 
 int main(void) {
@@ -141,4 +138,9 @@ int main(void) {
     glfwTerminate();
     return 0;
 >>>>>>> 1a6dd7074fa93fb019ebd4c7a4a37984a935a776
+=======
+
+int main(void) {
+	KI *ki = new KI();
+>>>>>>> e81d541e4b43cbfda92bfb82c895090cb7e575f6
 }
