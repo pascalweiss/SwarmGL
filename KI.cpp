@@ -3,6 +3,7 @@
 
 KI::KI(void)
 {
+	//DrawStartScene();
 }
 
 
