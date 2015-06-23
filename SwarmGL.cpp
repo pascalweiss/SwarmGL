@@ -3,8 +3,14 @@
 #include <stdlib.h>
 #include <vector>
 
-// Include GLEW
-#include <GL/glew.h>
+////////////////////////////////////neu, nicht löschen
+#include "KI.h"
+////////////////////////////////////
+
+
+
+int main(void) {
+	KI *ki = new KI();
 
 // Include GLFW
 #include <GLFW/glfw3.h>
@@ -134,6 +140,5 @@ int main(void) {
 
     glfwTerminate();
     return 0;
+>>>>>>> 1a6dd7074fa93fb019ebd4c7a4a37984a935a776
 }
-
-
