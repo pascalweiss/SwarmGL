@@ -5,6 +5,7 @@
 #include "shader.hpp"
 
 
+<<<<<<< HEAD
 KI::KI(void) {
 	if (this->initialize() != 0) {
         assert(false);
@@ -61,6 +62,11 @@ int KI::initialize() {
         return -1;
     }
     return 0;
+=======
+KI::KI(void)
+{
+	//DrawStartScene();
+>>>>>>> 1a6dd7074fa93fb019ebd4c7a4a37984a935a776
 }
 /*
 int KI::initialize() {
