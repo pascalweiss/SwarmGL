@@ -22,6 +22,7 @@
 
 // Wuerfel und Kugel
 #include "objects.hpp"
+#include "Particle.h"
 using namespace glm;
 
 
@@ -105,12 +106,13 @@ int main(void) {
     // Background Color
     glClearColor(0.0f, 0.6f, 0.4f, 0.0f);
     // Shader auch benutzen !
-    glUseProgram(programID);
+    
     
     
     glm::vec3 lightPos = glm::vec3(4,4,-4);
     glUniform3f(glGetUniformLocation(programID, "LightPosition_worldspace"), lightPos.x, lightPos.y, lightPos.z);
     
+	
     // Eventloop
     while (!glfwWindowShouldClose(window)) {
         // Clear the screen
@@ -120,13 +122,15 @@ int main(void) {
         // Buffer 1: Wird mit Frequenz des Bildschirms ausgelesen und auf Bildschirm angezeigt
         // Buffer 2: Fragment Shader schreibt rein. wird in Buffer 1 eingefügt, sobald glfwSwapBuffers aufgerufen wird.
         glfwSwapBuffers(window);
-        
+		drawTeapot();
         // Poll for and process events 
         glfwPollEvents();
     }
     glDeleteBuffers(1, &uvbuffer);
     glDeleteTextures(1, &Texture);
     glDeleteProgram(programID);
+
+	
 
     glfwTerminate();
     return 0;

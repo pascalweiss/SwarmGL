@@ -3,38 +3,35 @@
 Particle::Particle(void)
 {
 	this->vertexArrayIDParticle = 0;
+	this->positionVector[0] = glm::vec3(0.0f, 0.0f, 0.0f);
+	this->positionVector[1] = glm::vec3(0.0f, 100.0f, 0.0f);
+	this->positionVector[2] = glm::vec3(200.0f, 50.0f, 0.0f);
 }
 
 void Particle::draw() 
 {
-	if (!vertexArrayIDParticle)
-	{
-		generateParticle();
-	}
-
+	//if (!vertexArrayIDParticle)
+	generateParticle();
 	// Draw the triangles ! 
 	glBindVertexArray(vertexArrayIDParticle);//-> Daten zum Würfel, VertexArrayObjekt wird an Shader weitergegeben
-	glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles
+	glDrawArrays(GL_TRIANGLES, 0, 3*3); // 12*3 indices starting at 0 -> 12 triangles
 }
 
-glm::vec3 Particle::getNextPosition() //NR
+void Particle::move()
 {
-	/*float polygonArray[] = 
+	std::vector<glm::vec3> tmp = Particle::getNextPosition();
+	for (int i = 0; i < 3; i++)
+		this->positionVector.at(i) = tmp.at(i);
+}
+
+std::vector<glm::vec3> Particle::getNextPosition() //NR
+{
+	std::vector<glm::vec3> ret;
+	for (int i = 0; i < 3; i++)
 	{
-		0.0f,  0.5f, // Vertex 1 (X, Y)
-		0.5f, -0.5f, // Vertex 2 (X, Y)
-		-0.5f, -0.5f  // Vertex 3 (X, Y)
-	};
-	GLuint vertexBuffer;
-	
-	
-	glGenBuffers(1, &vertexBuffer);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(polygonArray), polygonArray, GL_STATIC_DRAW); 
-	*/
-	
-	
-	return glm::vec3(0,0,0);
+		ret.at(i) *= directionVector;
+	}
+	return ret;
 }
 
 void Particle::generateParticle()
@@ -48,9 +45,9 @@ void Particle::generateParticle()
 	//Muss noch variabel angepasst werden..
 	static const GLfloat g_vertex_buffer_data[] = 
 	{ 
-		0.0f, 0.0f, 0.0f,
-		0.0f, 1.0f, 0.0f,
-		2.0f, 0.5f, 0.0f
+		positionVector.at(0).x, positionVector.at(0).y, positionVector.at(0).z,
+		positionVector.at(1).x, positionVector.at(1).y, positionVector.at(1).z,
+		positionVector.at(2).x, positionVector.at(2).y, positionVector.at(2).z,
 	};
 
 	glGenBuffers(1, &vertexbuffer);
@@ -60,9 +57,9 @@ void Particle::generateParticle()
 	//Farbwerte des Partikels, mal sehen wies wird
 	static const GLfloat g_color_buffer_data[] = 
 	{ 
-		0.583f,  0.771f,  0.014f,   
-		0.822f,  0.569f,  0.201f,   
-		0.597f,  0.770f,  0.761f		
+		0.999f,  0.999f,  0.999f,   
+		0.999f,  0.999f,  0.999f,   
+		0.999f,  0.999f,  0.999f
 	};
 
 	glGenBuffers(1, &colorbuffer); //Adresse des Buffers anfordern
@@ -100,14 +97,14 @@ void Particle::setDirectionVector(glm::vec3 vector)
 	this->directionVector = vector;
 }
 
-void Particle::setPositionVector(glm::vec3 vector)
+void Particle::setPositionVector(std::vector<glm::vec3> vector)
 {
 	this->positionVector = vector;
 }
 
-void Particle::setVelocity(double aVelocity)
+void Particle::setVelocity(double velocity)
 {
-	this->velocity = aVelocity;
+	this->velocity = velocity;
 }
 
 void Particle::toggleReadyForDraw() 
