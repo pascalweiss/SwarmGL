@@ -7,6 +7,14 @@ Particle::Particle(void)
 
 void Particle::draw() 
 {
+	if (!vertexArrayIDParticle)
+	{
+		generateParticle();
+	}
+
+	// Draw the triangles ! 
+	glBindVertexArray(vertexArrayIDParticle);//-> Daten zum Würfel, VertexArrayObjekt wird an Shader weitergegeben
+	glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles
 }
 
 glm::vec3 Particle::getNextPosition() //NR
