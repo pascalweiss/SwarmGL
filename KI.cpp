@@ -60,7 +60,9 @@ int KI::initialize() {
 
 void KI::start() {
 	for (;;) {
-		std::cout << "WAT2";
+		glClear(GL_COLOR_BUFFER_BIT);
+		glfwSwapBuffers(window);
+        glfwPollEvents();
 	}
 }
 
