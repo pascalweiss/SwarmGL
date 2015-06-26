@@ -60,7 +60,7 @@ int KI::initialize() {
 
 void KI::start() {
 	for (;;) {
-		std::cout << "WAT";
+		std::cout << "WAT2";
 	}
 }
 
