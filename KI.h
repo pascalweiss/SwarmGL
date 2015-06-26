@@ -8,8 +8,12 @@ class KI
 private:
 	GLuint programID;
 	GLFWwindow* window;
-	int initialize();
-	void error_callback(int error, const char* description);
+	void init();
+	void initGLFW();
+	void initGLEW();
+	static void KI::error_callback(int error, const char* description) {
+		fputs(description, stderr);
+	}
 	void start();
 public:
 	KI(void);

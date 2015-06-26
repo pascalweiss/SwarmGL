@@ -3,71 +3,54 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "shader.hpp"
+#include "Grid.h"
 
 
 KI::KI(void) {
-	if (this->initialize() != 0) {
-        assert(false);
-    }
+	this->init();
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
-    
-    // Background Color
     glClearColor(0.0f, 0.6f, 0.4f, 0.0f);
-    // Shader auch benutzen !
 	programID = LoadShaders("StandardShading.vertexshader", "StandardShading.fragmentshader");
     glUseProgram(programID);
 	this->start();
 }
 
-int KI::initialize() {
-    // Initialise GLFW
-    // Erst mal Fenster erzeugen
-    if (!glfwInit()) {
+void KI::init() {
+    initGLFW();
+	initGLEW();
+}
+
+void KI::initGLFW() {
+	if (!glfwInit()) {
         fprintf(stderr, "Failed to initialize GLFW\n");
         exit(EXIT_FAILURE);
     }
-
-    // Fehler werden auf stderr ausgegeben, s. o.
-    //glfwSetErrorCallback(error_callback);
-    
-    // Open a window and create its OpenGL context
-    // glfwWindowHint vorher aufrufen, um erforderliche Resourcen festzulegen
-	window = glfwCreateWindow(1024, // Breite
-                                          768,  // Hoehe
-                                          "CG - Tutorial", // Ueberschrift
-                                          NULL,  // windowed mode
-                                          NULL); // shared window
-    
+	glfwSetErrorCallback(KI::error_callback);
+	window = glfwCreateWindow(1024, 768, "SwarmGL", NULL, NULL);
     if (!window) {
         glfwTerminate();
-        exit(EXIT_FAILURE);
+		fprintf(stderr, "Failed to initialize GLFW\n");
+        assert(false);
     }
-    
-    // Make the window's context current (wird nicht automatisch gemacht)
     glfwMakeContextCurrent(window);
-    
-    // Initialize GLEW
-    // GLEW ermöglicht Zugriff auf OpenGL-API > 1.1
-    glewExperimental = true; // Needed for core profile
-    
+}
+
+void KI::initGLEW() {
+	glewExperimental = true; // Needed for core profile
     if (glewInit() != GLEW_OK) {
         fprintf(stderr, "Failed to initialize GLEW\n");
-		return 1;
+		assert(false);
     }
-	return 0;
 }
 
 void KI::start() {
+	Grid* grid = new Grid(3);
 	for (;;) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		glfwSwapBuffers(window);
         glfwPollEvents();
 	}
-}
-
-void KI::error_callback(int error, const char* description) {
-    fputs(description, stderr);
 }
 
 KI::~KI(void)
