@@ -1,8 +1,10 @@
 #include "Particle.h"
+#include <iostream>
 
 Particle::Particle(void)
 {
 	this->vertexArrayIDParticle = 0;
+	this->positionVector.resize(3);
 	this->positionVector[0] = glm::vec3(0.0f, 0.0f, 0.0f);
 	this->positionVector[1] = glm::vec3(0.0f, 100.0f, 0.0f);
 	this->positionVector[2] = glm::vec3(200.0f, 50.0f, 0.0f);
@@ -57,9 +59,9 @@ void Particle::generateParticle()
 	//Farbwerte des Partikels, mal sehen wies wird
 	static const GLfloat g_color_buffer_data[] = 
 	{ 
-		0.999f,  0.999f,  0.999f,   
-		0.999f,  0.999f,  0.999f,   
-		0.999f,  0.999f,  0.999f
+		0.999f,  0.777f,  0.666f,   
+		0.333f,  0.444f,  0.555f,   
+		0.222f,  0.111f,  0.123f
 	};
 
 	glGenBuffers(1, &colorbuffer); //Adresse des Buffers anfordern

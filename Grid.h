@@ -9,7 +9,7 @@ class Grid
 {
 private:
 	vector<vector<vector<Quadrant*>>> quadrantVector;
-	vector<Quadrant*> particleVector;
+	vector<Particle*> particleVector;
 	void initQuadrants(int dimensionLength);
 	void initParticles();
 public:
