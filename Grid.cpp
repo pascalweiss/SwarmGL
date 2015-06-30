@@ -5,7 +5,6 @@ Grid::Grid(int dimensionLength): particleVector()
 {
 	this->initQuadrants(dimensionLength);
 	this->initParticles();
-	particleVector.push_back(new Particle());
 }
 
 void Grid::initQuadrants(int dimensionLength)
@@ -23,9 +22,11 @@ void Grid::initQuadrants(int dimensionLength)
 
 void Grid::initParticles()
 {
+	Particle* particle;
 	for (int i = 0; i < NUMBER_OF_PARTICLES; i++) 
 	{
-		//this->particleVector.push_back(new Particle());
+		particle = new Particle();
+		this->particleVector.push_back(particle);
 	}
 }
 
