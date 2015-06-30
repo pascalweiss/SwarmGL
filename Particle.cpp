@@ -5,9 +5,9 @@ Particle::Particle(void)
 {
 	this->vertexArrayIDParticle = 0;
 	this->positionVector.resize(3);
-	this->positionVector[0] = glm::vec3(0.0f, 0.0f, 0.0f);
-	this->positionVector[1] = glm::vec3(0.0f, 100.0f, 0.0f);
-	this->positionVector[2] = glm::vec3(200.0f, 50.0f, 0.0f);
+	this->positionVector[0] = glm::vec3(0.0f, 0.0f, -1.0f);
+	this->positionVector[1] = glm::vec3(0.0f, 1.0f, -1.0f);
+	this->positionVector[2] = glm::vec3(2.0f, 0.50f, -1.0f);
 }
 
 void Particle::draw() 
