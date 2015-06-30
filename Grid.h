@@ -9,8 +9,9 @@ class Grid
 {
 private:
 	vector<vector<vector<Quadrant*>>> quadrantVector;
-	vector<Particle> particleVector;
-	void Grid::initQuadrants(int dimensionLength);
+	vector<Quadrant*> particleVector;
+	void initQuadrants(int dimensionLength);
+	void initParticles();
 public:
 	Grid(int dimensionLength);
 	Quadrant getQuadrantAt(QuadrantCoordinates quadCoordinates);
