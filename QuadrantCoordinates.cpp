@@ -4,39 +4,39 @@
 QuadrantCoordinates::QuadrantCoordinates() {
 }
 
-QuadrantCoordinates::QuadrantCoordinates(int x, int y, int z)
+QuadrantCoordinates::QuadrantCoordinates(float x, float y, float z)
 {
 	this->x = x;
 	this->y = y;
 	this->z = z;
 }
 
-void QuadrantCoordinates::setX(int x)
+void QuadrantCoordinates::setX(float x)
 {
 	this->x = x;
 }
 
-void QuadrantCoordinates::setY(int y)
+void QuadrantCoordinates::setY(float y)
 {
 	this->y = y;
 }
 
-void QuadrantCoordinates::setZ(int z)
+void QuadrantCoordinates::setZ(float z)
 {
 	this->z = z;
 }
 
-int QuadrantCoordinates::getX()
+float QuadrantCoordinates::getX()
 {
 	return this->x;
 }
 
-int QuadrantCoordinates::getY()
+float QuadrantCoordinates::getY()
 {
 	return this->y;
 }
 
-int QuadrantCoordinates::getZ()
+float QuadrantCoordinates::getZ()
 {
 	return this->z;
 }
