@@ -31,12 +31,6 @@ void Particle::draw()
 		generateParticle();
 	glBindVertexArray(vertexArrayIDParticle);//-> Daten zum Würfel, VertexArrayObjekt wird an Shader weitergegeben
 	glDrawArrays(GL_TRIANGLES, 0, 3*3); // 12*3 indices starting at 0 -> 12 triangles
-	for (int i = 0; i < 3; i++)
-	{
-		std::cout << "POS[" << i << ".x:" << positionVector[i].x << std::endl;
-		std::cout << "POS[" << i << ".y:" << positionVector[i].y << std::endl;
-		std::cout << "POS[" << i << ".z:" << positionVector[i].z << std::endl;
-	}
 }
 
 void Particle::move()
