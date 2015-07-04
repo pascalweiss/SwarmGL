@@ -42,6 +42,6 @@ private:
 	void setBasePositions(glm::vec3 basePosVector, glm::vec3 normVector);
 	
 	glm::vec3 normalizeVector(glm::vec3 toNormalize);
-	glm::vec3 getUprightNormVector();
+	glm::vec3 getUprightNormVector(glm::vec3 toNorm);
 };
 
