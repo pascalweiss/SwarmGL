@@ -32,7 +32,7 @@ void Quadrant::calculateInfluenceVector()
 	this->influenceVector->setVector(glm::vec3(x,y,z));
 	this->influenceVector->setIntensity(this->calculateIntensity());
 	if (DEBUG) {
-		std::cout << "Q(" + std::to_string(x);
+	//TODO	std::cout << "Q(" + std::to_string(x);
 	}
 }
 

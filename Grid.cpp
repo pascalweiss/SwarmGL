@@ -48,6 +48,7 @@ double Grid::calculateLocationIntensity(int dimensionLength, QuadrantCoordinates
 		double biggestCoordinate = coordinates->getBiggestAbsolute();
 		return biggestCoordinate / maxCoordinate;
 	}
+	return 0;
 }
 
 void Grid::initParticles()
