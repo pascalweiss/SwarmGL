@@ -22,30 +22,41 @@ void Particle::init(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::ve
 	this->len = aLen;
 	setPeak(basePosVector);
 	setBasePositions(basePosVector, normVector);
+	this->velocity = 0.01;
 }
 
 void Particle::draw() 
 {
-	if (!vertexArrayIDParticle)
+	//if (!vertexArrayIDParticle)
 		generateParticle();
 	glBindVertexArray(vertexArrayIDParticle);//-> Daten zum Würfel, VertexArrayObjekt wird an Shader weitergegeben
 	glDrawArrays(GL_TRIANGLES, 0, 3*3); // 12*3 indices starting at 0 -> 12 triangles
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << "POS[" << i << ".x:" << positionVector[i].x << std::endl;
+		std::cout << "POS[" << i << ".y:" << positionVector[i].y << std::endl;
+		std::cout << "POS[" << i << ".z:" << positionVector[i].z << std::endl;
+	}
 }
 
 void Particle::move()
 {
-	std::vector<glm::vec3> tmp = Particle::getNextPosition();
+	/*std::vector<glm::vec3> tmp = Particle::getNextPosition();
 	for (int i = 0; i < 3; i++)
-		this->positionVector.at(i) = tmp.at(i);
+		this->positionVector.at(i) = tmp.at(i);*/
+	for (int i = 0; i < 3; i++)
+		this->positionVector[i] = this->positionVector[i] + this->directionVector * 
+																	velocity;
+			
+	
 }
 
 std::vector<glm::vec3> Particle::getNextPosition() //NR
 {
 	std::vector<glm::vec3> ret;
+	ret.resize(3);
 	for (int i = 0; i < 3; i++)
-	{
-		ret.at(i) *= directionVector;
-	}
+		ret.at(i) = this->positionVector.at(i) + this->directionVector * velocity;
 	return ret;
 }
 
@@ -56,16 +67,23 @@ void Particle::generateParticle()
 	
 	glGenVertexArrays(1, &vertexArrayIDParticle); //Erzeuge VertexArrayObjekt
 	glBindVertexArray(vertexArrayIDParticle); //Binde das erzeugte Objekt
-
-	//Muss noch variabel angepasst werden..
-	static const GLfloat g_vertex_buffer_data[] = 
+	
+	static GLfloat g_vertex_buffer_data[9];
+	/*static GLfloat g_vertex_buffer_data[] = //war mal const
 	{ 
-		positionVector.at(0).x, positionVector.at(0).y, positionVector.at(0).z,
-		positionVector.at(1).x, positionVector.at(1).y, positionVector.at(1).z,
-		positionVector.at(2).x, positionVector.at(2).y, positionVector.at(2).z,
-	};
-
+		this->positionVector.at(0).x, this->positionVector.at(0).y, this->positionVector.at(0).z,
+		this->positionVector.at(1).x, this->positionVector.at(1).y, this->positionVector.at(1).z,
+		this->positionVector.at(2).x, this->positionVector.at(2).y, this->positionVector.at(2).z,
+	};*/
+	for (int i = 0, j = 0; i < 3; i++)
+	{
+		g_vertex_buffer_data[j++] = this->positionVector[i].x;
+		g_vertex_buffer_data[j++] = this->positionVector[i].y;
+		g_vertex_buffer_data[j++] = this->positionVector[i].z;
+	}
+	
 	glGenBuffers(1, &vertexbuffer);
+	
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 
@@ -104,12 +122,12 @@ void Particle::generateParticle()
 			(void*)0                          // array buffer offset
 	);
 	
-	glBindVertexArray(0);
+	//glBindVertexArray(0);
 }
 
 void Particle::setDirectionVector(glm::vec3 vector)
 {
-	this->directionVector = vector;
+	this->directionVector = normalizeVector(vector);
 }
 
 void Particle::setPositionVector(std::vector<glm::vec3> vector)
