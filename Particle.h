@@ -37,6 +37,7 @@ public:
 
 private:
 	void setPeak(glm::vec3 basePosVector);
+	void setBasePositions(glm::vec3 basePosVector, glm::vec3 normVector);
 	
 	glm::vec3 normalizeVector(glm::vec3 toNormalize);
 };
