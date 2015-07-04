@@ -7,10 +7,9 @@ Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec
 	this->directionVector = normalizeVector(aDirectionVector);
 	this->len = aLen;
 	setPeak(basePosVector);
+	setBasePositions(basePosVector, normVector);
 }
-				//get normal vector to calculate base points of the polygon, 
-				//peak is calculated by positionVector + directionVector * len
-
+				
 Particle::Particle(void)
 {
 	this->vertexArrayIDParticle = 0;
@@ -126,6 +125,13 @@ void Particle::toggleReadyForDraw()
 void Particle::setPeak(glm::vec3 basePosVector)
 {
 	this->positionVector[2] = basePosVector + this->directionVector * len;
+}
+
+void Particle::setBasePositions(glm::vec3 basePosVector, glm::vec3 normVector)
+{
+	normVector = this->normalizeVector(normVector);
+	this->positionVector[0] = basePosVector + normVector * (len / 2);
+	this->positionVector[1] = basePosVector + normVector * (-len / 2);
 }
 
 glm::vec3 Particle::normalizeVector(glm::vec3 toNormalize)
