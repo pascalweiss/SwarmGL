@@ -15,7 +15,7 @@ void Grid::initQuadrants(int dimensionLength)
 		this->quadrantVector.push_back(vector<vector<Quadrant*>>(dimensionLength));
 		for (int y = 0; y < dimensionLength; y++) {
 			for (int z = 0; z < dimensionLength; z++) {
-				this->quadrantVector[x][y][z] = new Quadrant();
+			//	this->quadrantVector[x][y][z] = new Quadrant();
 			}
 		}
 	}
