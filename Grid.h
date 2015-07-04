@@ -12,6 +12,8 @@ private:
 	vector<Particle*> particleVector;
 	void initQuadrants(int dimensionLength);
 	void initParticles();
+	void addQuadrant(int x, int y, int z, int dimensionLength);
+	double calculateLocationIntensity(int dimensionLength, QuadrantCoordinates * coordinates); 
 public:
 	Grid(int dimensionLength);
 	Quadrant* getQuadrantAt(int x, int y, int z);

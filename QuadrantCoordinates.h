@@ -14,6 +14,7 @@ public:
 	float getX();
 	float getY();
 	float getZ();
+	float getBiggestAbsolute();
 	~QuadrantCoordinates(void);
 };
 
