@@ -3,15 +3,11 @@
 
 Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen)
 {
-	this->init();
-	this->directionVector = normalizeVector(aDirectionVector);
-	this->len = aLen;
-	setPeak(basePosVector);
-	setBasePositions(basePosVector, normVector);
+	this->init(basePosVector, aDirectionVector, normVector, aLen);
+	
 }
 
 Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, float aLen)
-	: Particle(glm::vec3(0.0,0.0,0.0), glm::vec3(0.0,0.0,0.0),glm::vec3(0.0,0.0,0.0), 3)
 {
 	
 }
@@ -24,10 +20,14 @@ Particle::Particle()
 	this->positionVector[2] = glm::vec3(2.0f, 0.50f, -1.0f);
 }
 
-void Particle::init()
+void Particle::init(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen)
 {
 	this->vertexArrayIDParticle = 0;
 	this->positionVector.resize(3);
+	this->directionVector = normalizeVector(aDirectionVector);
+	this->len = aLen;
+	setPeak(basePosVector);
+	setBasePositions(basePosVector, normVector);
 }
 
 void Particle::draw() 

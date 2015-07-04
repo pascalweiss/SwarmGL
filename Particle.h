@@ -37,7 +37,7 @@ public:
 	~Particle(void);
 
 private:
-	void init();
+	void init(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen);
 	void setPeak(glm::vec3 basePosVector);
 	void setBasePositions(glm::vec3 basePosVector, glm::vec3 normVector);
 	
