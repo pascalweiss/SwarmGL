@@ -23,7 +23,7 @@ void Grid::initQuadrants(int dimensionLength)
 						(float)x + startCoordinate, 
 						(float)y + startCoordinate, 
 						(float)z + startCoordinate);
-					this->quadrantVector[x][y].push_back(new Quadrant(coordinates));
+					this->quadrantVector[x][y].push_back(new Quadrant(coordinates, 0));
 				}
 			}
 		}

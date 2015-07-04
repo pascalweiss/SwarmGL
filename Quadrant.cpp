@@ -3,9 +3,10 @@
 #include "Globals.h"
 
 
-Quadrant::Quadrant(QuadrantCoordinates* coordinates)
+Quadrant::Quadrant(QuadrantCoordinates* coordinates, double locationIntensity)
 {
 	this->coordinates = coordinates;
+	this->locationIntensity = locationIntensity;
 	glm::vec3 v = glm::vec3(0.0,0.0,0.0);
 	this->influenceVector = new InfluenceVector(0, glm::vec3(0.0,0.0,0.0));
 }
@@ -31,7 +32,7 @@ void Quadrant::calculateInfluenceVector()
 double Quadrant::calculateIntensity() 
 {
 	double particle_influence = (double)this->particles.size() * PARTICLE_INFLUENCE;
-	
+	return this->locationIntensity + particle_influence;
 }
 
 
