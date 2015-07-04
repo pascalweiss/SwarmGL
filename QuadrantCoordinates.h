@@ -6,10 +6,11 @@ private:
 	int y;
 	int z;
 public:
-	QuadrantCoordinates(void);
-	void setX();
-	void setY();
-	void setZ();
+	QuadrantCoordinates();
+	QuadrantCoordinates(int x, int y, int z);
+	void setX(int x);
+	void setY(int y);
+	void setZ(int z);
 	int getX();
 	int getY();
 	int getZ();
