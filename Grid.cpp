@@ -9,24 +9,18 @@ Grid::Grid(int dimensionLength): particleVector(), quadrantVector()
 
 void Grid::initQuadrants(int dimensionLength)
 {
-	this->quadrantVector.resize(dimensionLength);
-
 	for (int x = 0; x < dimensionLength; x++) {
-		this->quadrantVector.push_back(vector<vector<Quadrant*>>(dimensionLength));
+		vector <vector<Quadrant *>> v;
+		this->quadrantVector.push_back(v);
 		for (int y = 0; y < dimensionLength; y++) {
+			vector <Quadrant*> w;
+			this->quadrantVector[x].push_back(w);
 			for (int z = 0; z < dimensionLength; z++) {
-			//	this->quadrantVector[x][y][z] = new Quadrant();
+				QuadrantCoordinates* coordinates = new QuadrantCoordinates((double)x, (double)y, (double)z);
+				this->quadrantVector[x][y].push_back(new Quadrant(coordinates));
 			}
 		}
 	}
-	/*for(int x = 0; x < dimensionLength; x++)
-	{
-		this->quadrantVector[x].resize(dimensionLength);
-		for(int y = 0; y < dimensionLength; y++)		
-		{
-			this->quadrantVector[x][y].resize(dimensionLength, new Quadrant());
-		}
-	}*/
 }
 
 void Grid::initParticles()
@@ -54,10 +48,13 @@ void Grid::registerAndDrawParticles()
 
 Grid::~Grid(void)
 {
+	quadrantVector.clear();
+	particleVector.clear();
 }
 
 
 //private Methods
 void Grid::generateInfluenceVectors()
 {
+	
 }

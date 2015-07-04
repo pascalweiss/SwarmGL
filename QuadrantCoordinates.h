@@ -2,18 +2,18 @@
 class QuadrantCoordinates
 {
 private:
-	int x;
-	int y;
-	int z;
+	float x;
+	float y;
+	float z;
 public:
 	QuadrantCoordinates();
-	QuadrantCoordinates(int x, int y, int z);
-	void setX(int x);
-	void setY(int y);
-	void setZ(int z);
-	int getX();
-	int getY();
-	int getZ();
+	QuadrantCoordinates(float x, float y, float z);
+	void setX(float x);
+	void setY(float y);
+	void setZ(float z);
+	float getX();
+	float getY();
+	float getZ();
 	~QuadrantCoordinates(void);
 };
 
