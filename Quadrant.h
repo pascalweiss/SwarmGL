@@ -7,8 +7,9 @@ class Quadrant
 {
 private:
 	std::vector<Particle> particles;
-	InfluenceVector influenceVector;
+	InfluenceVector* influenceVector;
 	QuadrantCoordinates* coordinates;
+	double calculateIntensity();
 public:
 	Quadrant(QuadrantCoordinates* coordinates);
 	std::vector<Particle> getParticles();
