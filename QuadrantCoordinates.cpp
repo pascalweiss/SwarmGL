@@ -1,5 +1,5 @@
 #include "QuadrantCoordinates.h"
-
+#include <cmath>
 
 QuadrantCoordinates::QuadrantCoordinates() {
 }
@@ -41,6 +41,19 @@ float QuadrantCoordinates::getZ()
 	return this->z;
 }
 
+float QuadrantCoordinates::getBiggestAbsolute() {
+	float biggest = abs(this->x);
+	float absY = abs(this->y);
+	float absZ = abs(this->z);
+	if (absY > biggest) {
+		biggest = absY;
+	}
+	if (absZ > biggest) {
+		biggest = absZ;
+	}
+	return biggest;
+}
+ 
 QuadrantCoordinates::~QuadrantCoordinates(void)
 {
 }
