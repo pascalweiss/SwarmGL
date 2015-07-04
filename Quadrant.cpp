@@ -45,7 +45,8 @@ double Quadrant::calculateIntensity()
 			<< "," 
 			<< this->coordinates->getZ()
 			<< ") Intensity: " 
-			<< particle_influence + this->locationIntensity; 
+			<< particle_influence + this->locationIntensity
+			<< std::endl;
 	}
 	return this->locationIntensity + particle_influence;
 }
