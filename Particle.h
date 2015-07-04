@@ -10,7 +10,7 @@ class Particle
 private:
 	bool readyForDraw;
 	
-	double velocity;
+	float velocity;
 	float len;
 	
 	glm::vec3 directionVector;
