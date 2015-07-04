@@ -11,15 +11,18 @@ Grid::Grid(int dimensionLength): particleVector(), quadrantVector()
 void Grid::initQuadrants(int dimensionLength)
 {
 	if (dimensionLength % 2 == 1) {
-		int startCoordinate = (dimensionLength - 1) /2;
-		for (int x = startCoordinate; x < dimensionLength; x++) {
+		int startCoordinate = -1 * (dimensionLength - 1) /2;
+		for (int x = 0; x < dimensionLength; x++) {
 			vector <vector<Quadrant *>> v;
 			this->quadrantVector.push_back(v);
-			for (int y = startCoordinate; y < dimensionLength; y++) {
+			for (int y = 0; y < dimensionLength; y++) {
 				vector <Quadrant*> w;
 				this->quadrantVector[x].push_back(w);
-				for (int z = startCoordinate; z < dimensionLength; z++) {
-					QuadrantCoordinates* coordinates = new QuadrantCoordinates((double)x, (double)y, (double)z);
+				for (int z = 0; z < dimensionLength; z++) {
+					QuadrantCoordinates* coordinates = new QuadrantCoordinates(
+						(float)x + startCoordinate, 
+						(float)y + startCoordinate, 
+						(float)z + startCoordinate);
 					this->quadrantVector[x][y].push_back(new Quadrant(coordinates));
 				}
 			}
