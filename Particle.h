@@ -19,7 +19,6 @@ private:
 
 public:
 	Particle();
-	Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, float aLen);
 	Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen);
 				//get normal vector to calculate base points of the polygon, 
 				//peak is calculated by positionVector + directionVector * len

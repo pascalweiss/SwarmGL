@@ -9,12 +9,6 @@ Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec
 	setPeak(basePosVector);
 	setBasePositions(basePosVector, normVector);
 }
-
-Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, float aLen)
-	: Particle(glm::vec3(0.0,0.0,0.0), glm::vec3(0.0,0.0,0.0),glm::vec3(0.0,0.0,0.0), 3)
-{
-	
-}
 				
 Particle::Particle()
 {
