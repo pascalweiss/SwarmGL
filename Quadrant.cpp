@@ -23,7 +23,7 @@ void Quadrant::calculateInfluenceVector()
 {
 	float x = -1 * this->coordinates->getX();
 	float y = -1 * this->coordinates->getY();
-	float z = -1 * this->coordinates->getZ();	
+	float z = -1 * this->coordinates->getZ();
 	this->influenceVector->setVector(glm::vec3(x,y,z));
 	this->influenceVector->setIntensity(this->calculateIntensity());
 }
