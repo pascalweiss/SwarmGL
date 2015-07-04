@@ -2,13 +2,18 @@
 #include "Quadrant.h"
 #include "Particle.h"
 #include <vector>
+
+using namespace std;
+
 class Grid
 {
 private:
-	std::vector<std::vector<std::vector<Quadrant>>> quadrantArray;
-	std::vector<Particle> particleArray;
+	vector<vector<vector<Quadrant*>>> quadrantVector;
+	vector<Particle*> particleVector;
+	void initQuadrants(int dimensionLength);
+	void initParticles();
 public:
-	Grid(int numberOfQuadrants);
+	Grid(int dimensionLength);
 	Quadrant getQuadrantAt(QuadrantCoordinates quadCoordinates);
 	void calculateNewParticlePositions();
 	void registerAndDrawParticles();
