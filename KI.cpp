@@ -46,7 +46,7 @@ void KI::initGLEW() {
 }
 
 void KI::start() {
-	Grid* grid = new Grid(3);
+	Grid* grid = new Grid(5);
 	Particle *p1 = new Particle();
 	glEnableVertexAttribArray(0); // siehe layout im vertex shader: location = 0 
 	glVertexAttribPointer(0,  // location = 0 

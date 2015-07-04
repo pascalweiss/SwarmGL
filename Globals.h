@@ -1,1 +1,1 @@
-const int NUMBER_OF_PARTICLES = 3;
+const int NUMBER_OF_PARTICLES = 10;

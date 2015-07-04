@@ -7,8 +7,7 @@ Quadrant::Quadrant(QuadrantCoordinates* coordinates)
 }
 
 std::vector<Particle> Quadrant::getParticles()
-{
-	
+{	
 	return std::vector<Particle>();
 }
 
