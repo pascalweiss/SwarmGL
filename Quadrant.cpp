@@ -1,8 +1,9 @@
 #include "Quadrant.h"
 
 
-Quadrant::Quadrant(void)
+Quadrant::Quadrant(QuadrantCoordinates* coordinates)
 {
+	this->coordinates = coordinates;
 }
 
 std::vector<Particle> Quadrant::getParticles()

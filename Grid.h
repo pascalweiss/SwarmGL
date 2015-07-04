@@ -14,7 +14,7 @@ private:
 	void initParticles();
 public:
 	Grid(int dimensionLength);
-	Quadrant getQuadrantAt(QuadrantCoordinates quadCoordinates);
+	Quadrant* getQuadrantAt(int x, int y, int z);
 	void calculateNewParticlePositions();
 	void registerAndDrawParticles();
 	~Grid(void);
