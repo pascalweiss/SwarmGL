@@ -49,7 +49,6 @@ void KI::start() {
 	Grid* grid = new Grid(5);
 	Particle *p1 = new Particle(glm::vec3(0.0f, 0.0f, 0.0f), 
 								glm::vec3(1.0f, 1.0f, 1.0f), 1);
-	
 	glEnableVertexAttribArray(0); // siehe layout im vertex shader: location = 0 
 	glVertexAttribPointer(0,  // location = 0 
 		      3,  // Datenformat vec3: 3 floats fuer xyz 
@@ -71,6 +70,7 @@ void KI::start() {
 		p1->move();
 		sendMVP();
 		p1->draw();
+		
 				
 		glfwSwapBuffers(window);
         glfwPollEvents();
