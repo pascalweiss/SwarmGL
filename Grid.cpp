@@ -39,8 +39,8 @@ void Grid::initParticles()
 	Particle* particle;
 	for (int i = 0; i < NUMBER_OF_PARTICLES; i++) 
 	{
-		particle = new Particle();
-		this->particleVector.push_back(particle);
+		//particle = new Particle();
+		//this->particleVector.push_back(particle);
 	}
 }
 
