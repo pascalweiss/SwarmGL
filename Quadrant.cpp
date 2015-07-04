@@ -31,18 +31,24 @@ void Quadrant::calculateInfluenceVector()
 	float z = -1 * this->coordinates->getZ();
 	this->influenceVector->setVector(glm::vec3(x,y,z));
 	this->influenceVector->setIntensity(this->calculateIntensity());
-	if (DEBUG) {
-	//TODO	std::cout << "Q(" + std::to_string(x);
-	}
 }
 
 double Quadrant::calculateIntensity() 
 {
 	double particle_influence = (double)this->particles.size() * PARTICLE_INFLUENCE;
+	if (DEBUG) {
+		std::cout 
+			<< "Q(" 
+			<< this->coordinates->getX() 
+			<< "," 
+			<< this->coordinates->getY() 
+			<< "," 
+			<< this->coordinates->getZ()
+			<< ") Intensity: " 
+			<< particle_influence + this->locationIntensity; 
+	}
 	return this->locationIntensity + particle_influence;
 }
-
-
 
 Quadrant::~Quadrant(void)
 {
