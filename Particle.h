@@ -18,7 +18,6 @@ private:
 	std::vector<glm::vec3> positionVector; //move all points when translate Particle
 
 public:
-	Particle();
 	Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, float aLen);
 	Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen);
 				//get normal vector to calculate base points of the polygon, 
