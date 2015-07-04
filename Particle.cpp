@@ -1,6 +1,16 @@
 #include "Particle.h"
 #include <iostream>
 
+Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen)
+{
+	this->vertexArrayIDParticle = 0;
+	this->directionVector = normalizeVector(aDirectionVector);
+	this->len = aLen;
+	setPeak(basePosVector);
+}
+				//get normal vector to calculate base points of the polygon, 
+				//peak is calculated by positionVector + directionVector * len
+
 Particle::Particle(void)
 {
 	this->vertexArrayIDParticle = 0;
@@ -12,9 +22,8 @@ Particle::Particle(void)
 
 void Particle::draw() 
 {
-	//if (!vertexArrayIDParticle)
-	generateParticle();
-	// Draw the triangles ! 
+	if (!vertexArrayIDParticle)
+		generateParticle();
 	glBindVertexArray(vertexArrayIDParticle);//-> Daten zum Würfel, VertexArrayObjekt wird an Shader weitergegeben
 	glDrawArrays(GL_TRIANGLES, 0, 3*3); // 12*3 indices starting at 0 -> 12 triangles
 }
@@ -113,6 +122,17 @@ void Particle::toggleReadyForDraw()
 {
 	(this->readyForDraw) ? this->readyForDraw = false : this->readyForDraw = true;
 }
+
+void Particle::setPeak(glm::vec3 basePosVector)
+{
+	this->positionVector[2] = basePosVector + this->directionVector * len;
+}
+
+glm::vec3 Particle::normalizeVector(glm::vec3 toNormalize)
+{
+	return glm::normalize(toNormalize);
+}
+
 
 Particle::~Particle(void)
 {
