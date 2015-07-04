@@ -3,25 +3,30 @@
 
 Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen)
 {
-	this->init();
+	this->init(basePosVector, aDirectionVector, normVector, aLen);
+	
+}
+<<<<<<< HEAD
+				
+Particle::Particle()
+=======
+
+Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, float aLen)
+>>>>>>> 7e3b7e6aa83def76f0475e0c130c5ccb23a81486
+{
+	this->init(basePosVector, aDirectionVector, getUprightNormVector(aDirectionVector),
+		aLen);
+		
+}
+
+void Particle::init(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen)
+{
+	this->vertexArrayIDParticle = 0;
+	this->positionVector.resize(3);
 	this->directionVector = normalizeVector(aDirectionVector);
 	this->len = aLen;
 	setPeak(basePosVector);
 	setBasePositions(basePosVector, normVector);
-}
-				
-Particle::Particle()
-{
-	this->init();
-	this->positionVector[0] = glm::vec3(0.0f, 0.0f, -1.0f);
-	this->positionVector[1] = glm::vec3(0.0f, 1.0f, -1.0f);
-	this->positionVector[2] = glm::vec3(2.0f, 0.50f, -1.0f);
-}
-
-void Particle::init()
-{
-	this->vertexArrayIDParticle = 0;
-	this->positionVector.resize(3);
 }
 
 void Particle::draw() 
@@ -144,9 +149,9 @@ glm::vec3 Particle::normalizeVector(glm::vec3 toNormalize)
 	return glm::normalize(toNormalize);
 }
 
-glm::vec3 Particle::getUprightNormVector()
+glm::vec3 Particle::getUprightNormVector(glm::vec3 toNorm)
 {
-	return glm::vec3(0.0f, -(this->directionVector.z), this->directionVector.y);
+	return glm::vec3(0.0f, -(toNorm.z), toNorm.y);
 }
 
 Particle::~Particle(void)
