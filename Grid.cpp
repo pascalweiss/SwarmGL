@@ -1,11 +1,13 @@
 #include "Grid.h"
 #include "Globals.h"
 #include <iostream>
+#include "time.h"
 
 Grid::Grid(int dimensionLength): particleVector(), quadrantVector()
 {
 	this->initQuadrants(dimensionLength);
 	this->initParticles();
+	srand((unsigned) time(NULL));
 }
 
 void Grid::initQuadrants(int dimensionLength)
@@ -85,4 +87,10 @@ Grid::~Grid(void)
 void Grid::generateInfluenceVectors()
 {
 	
+}
+
+double Grid::getRandomDouble(double min, double max)
+{
+	double f = (double)rand() / RAND_MAX;
+	return min + f * (max - min);
 }

@@ -22,5 +22,6 @@ public:
 	~Grid(void);
 private:
 	void generateInfluenceVectors();
+	double getRandomDouble(double min, double max);
 };
 

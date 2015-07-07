@@ -8,13 +8,15 @@
 
 
 KI::KI(void) {
-	this->init();
+	/*this->init();
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glClearColor(0.0f, 0.6f, 0.4f, 0.0f);
 	programID = LoadShaders("TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader");
     glUseProgram(programID);
-	this->start();
+	this->start();*/
+
+
 }
 
 void KI::init() {
