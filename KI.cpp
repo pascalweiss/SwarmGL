@@ -8,15 +8,13 @@
 
 
 KI::KI(void) {
-	/*this->init();
+	this->init();
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
-    glClearColor(0.0f, 0.6f, 0.4f, 0.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	programID = LoadShaders("TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader");
     glUseProgram(programID);
-	this->start();*/
-
-
+	this->start();
 }
 
 void KI::init() {
@@ -49,8 +47,6 @@ void KI::initGLEW() {
 
 void KI::start() {
 	Grid* grid = new Grid(5);
-	Particle *p1 = new Particle(glm::vec3(0.0f, 0.0f, 0.0f), 
-								glm::vec3(1.0f, 1.0f, 1.0f), 1);
 	glEnableVertexAttribArray(0); // siehe layout im vertex shader: location = 0 
 	glVertexAttribPointer(0,  // location = 0 
 		      3,  // Datenformat vec3: 3 floats fuer xyz 
@@ -63,15 +59,17 @@ void KI::start() {
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-		View = glm::lookAt(glm::vec3(0,0,5), // Camera is at (0,0,-5), in World Space, Punkt d Betrachters
+		View = glm::lookAt(glm::vec3(0,0,21), // Camera is at (0,0,-5), in World Space, Punkt d Betrachters
 						   glm::vec3(0,0,0),  // and looks at the origin, Nullpunkt
 						   glm::vec3(0,1,0)); // Head is up (set to 0,-1,0 to look upside-down), sagt, wo oben ist
 											  // bzw ob der Betrachter sich in Schräglage befindet
 		
 		Model = glm::mat4(1.0f);
-		p1->move();
+		grid->moveParticles();
+		grid->clearQuadrants();
+		grid->registerParticles();
 		sendMVP();
-		p1->draw();
+		grid->drawParticles();
 		
 				
 		glfwSwapBuffers(window);

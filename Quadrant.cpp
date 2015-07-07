@@ -18,6 +18,16 @@ std::vector<Particle> Quadrant::getParticles()
 	return std::vector<Particle>();
 }
 
+void Quadrant::addParticle(Particle *particle) 
+{
+	this->particles.push_back(particle);
+}
+
+void Quadrant::clearParticles() 
+{
+	this->particles.clear();
+}
+
 void Quadrant::setParticles(std::vector<Particle*> particles)
 {
 	this->particles = particles;
@@ -49,6 +59,12 @@ double Quadrant::calculateIntensity()
 			<< std::endl;
 	}
 	return this->locationIntensity + particle_influence;
+}
+
+void Quadrant::applyInflueneceVector()
+{
+	for (int i = 0; i < particles.size(); i++)
+		particles[i]->addToDirectionVector(this->influenceVector->getEffectiveVector());
 }
 
 Quadrant::~Quadrant(void)

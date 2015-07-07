@@ -56,10 +56,13 @@ double Grid::calculateLocationIntensity(int dimensionLength, QuadrantCoordinates
 void Grid::initParticles()
 {
 	Particle* particle;
+	float max = DIMENSION_LENGTH / 2;
+	float min = -max;
 	for (int i = 0; i < NUMBER_OF_PARTICLES; i++) 
 	{
-		//particle = new Particle();
-		//this->particleVector.push_back(particle);
+		particleVector.push_back(new Particle(getRandomVector(min, max), 
+											  getRandomVector(min, max), 
+											  PARTICLE_LENGTH));
 	}
 }
 
@@ -70,10 +73,64 @@ Quadrant* Grid::getQuadrantAt(int x, int y, int z)
 
 void Grid::calculateNewParticlePositions()
 {
+
 }
 
-void Grid::registerAndDrawParticles()
+void Grid::clearQuadrants() 
 {
+	int length = this->quadrantVector.size();
+	for (int x = 0; x < length; x++) 
+	{
+		for (int y = 0; y < length; y++) 
+		{
+			for (int z = 0; z < length; z++) 
+			{
+				this->quadrantVector[x][y][z]->clearParticles();		
+			}
+		}
+	}
+}
+
+void Grid::registerParticles() 
+{
+	glm::vec3 v;
+	for (int i = 0; i < particleVector.size(); i++)
+	{	
+		v = particleVector[i]->getBasePosition();
+		quadrantVector[getIndex(v.x)][getIndex(v.y)][getIndex(v.z)]->addParticle(particleVector[i]);
+	}
+}
+
+int Grid::getIndex(int absPos)
+{
+	return absPos + this->quadrantVector.size() / 2;
+}
+
+void Grid::moveParticles()
+{
+	applyInfluenceVectors();
+	for (int i = 0; i < particleVector.size(); i++)
+		particleVector[i]->move();
+}
+
+void Grid::applyInfluenceVectors()
+{
+	for (int x = 0; x < quadrantVector.size(); x++)
+	{
+		for (int y = 0; y < quadrantVector.size(); y++)
+		{
+			for (int z = 0; z < quadrantVector.size(); z++)
+			{
+				quadrantVector[x][y][z]->applyInflueneceVector();
+			}
+		}
+	}
+}
+
+void Grid::drawParticles()
+{
+	for (int i = 0; i < particleVector.size(); i++)
+		particleVector[i]->draw();
 }
 
 Grid::~Grid(void)
@@ -89,8 +146,15 @@ void Grid::generateInfluenceVectors()
 	
 }
 
-double Grid::getRandomDouble(double min, double max)
+float Grid::getRandomFloat(float min, float max)
 {
-	double f = (double)rand() / RAND_MAX;
+	float f = (float)rand() / RAND_MAX;
 	return min + f * (max - min);
+}
+
+glm::vec3 Grid::getRandomVector(float min, float max)
+{
+	return glm::vec3(this->getRandomFloat(min, max), 
+					 this->getRandomFloat(min, max),
+					 this->getRandomFloat(min, max));
 }

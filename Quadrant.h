@@ -16,8 +16,11 @@ private:
 public:
 	Quadrant(QuadrantCoordinates* coordinates, double locationIntensity);
 	std::vector<Particle> getParticles();
+	void clearParticles();
+	void addParticle(Particle* particles);
 	void setParticles(std::vector<Particle*> particles);
 	void calculateInfluenceVector();
+	void applyInflueneceVector();
 	~Quadrant(void);
 };
 

@@ -16,6 +16,7 @@ Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, float aL
 
 void Particle::init(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen)
 {
+	this->basePositionVector = basePosVector;
 	this->vertexArrayIDParticle = 0;
 	this->positionVector.resize(3);
 	this->directionVector = normalizeVector(aDirectionVector);
@@ -84,9 +85,9 @@ void Particle::generateParticle()
 	//Farbwerte des Partikels, mal sehen wies wird
 	static const GLfloat g_color_buffer_data[] = 
 	{ 
-		0.999f,  0.777f,  0.666f,   
+		0.111f,  0.777f,  0.666f,   
 		0.333f,  0.444f,  0.555f,   
-		0.222f,  0.111f,  0.123f
+		0.222f,  0.333f,  0.777f
 	};
 
 	glGenBuffers(1, &colorbuffer); //Adresse des Buffers anfordern
@@ -119,9 +120,14 @@ void Particle::generateParticle()
 	//glBindVertexArray(0);
 }
 
-void Particle::setDirectionVector(glm::vec3 vector)
+void Particle::addToDirectionVector(glm::vec3 vector)
 {
-	this->directionVector = normalizeVector(vector);
+	this->directionVector += normalizeVector(vector);
+}
+
+glm::vec3 Particle::getDirectionVector()
+{
+	return this->directionVector;
 }
 
 void Particle::setPositionVector(std::vector<glm::vec3> vector)
@@ -142,6 +148,11 @@ void Particle::toggleReadyForDraw()
 void Particle::setPeak(glm::vec3 basePosVector)
 {
 	this->positionVector[2] = basePosVector + this->directionVector * len;
+}
+
+glm::vec3 Particle::getBasePosition() 
+{
+	return basePositionVector;
 }
 
 void Particle::setBasePositions(glm::vec3 basePosVector, glm::vec3 normVector)

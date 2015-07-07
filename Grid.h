@@ -18,10 +18,16 @@ public:
 	Grid(int dimensionLength);
 	Quadrant* getQuadrantAt(int x, int y, int z);
 	void calculateNewParticlePositions();
-	void registerAndDrawParticles();
+	void registerParticles();
+	void moveParticles();
+	void drawParticles();
+	void clearQuadrants();
 	~Grid(void);
 private:
 	void generateInfluenceVectors();
-	double getRandomDouble(double min, double max);
+	void applyInfluenceVectors();
+	float getRandomFloat(float min, float max);
+	int getIndex(int absPos);
+	glm::vec3 getRandomVector(float min, float max);
 };
 
