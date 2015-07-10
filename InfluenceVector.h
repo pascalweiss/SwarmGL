@@ -1,12 +1,13 @@
 #pragma once
 #include <glm/glm.hpp>
-
+#include <vector>
+#include "Particle.h"
 
 class InfluenceVector
 {
 private:
 	glm::vec3 vector;
-	double intensity;
+	float intensity;
 public:
 	InfluenceVector(double intensity, glm::vec3 vector);
 	void setVector(glm::vec3 v);
@@ -14,4 +15,6 @@ public:
 	glm::vec3 getEffectiveVector(std::vector<Particle*> p);
 	glm::vec3 getVector();
 	~InfluenceVector(void);
+private:
+	glm::vec3 normalizeVector(glm::vec3 toNormalize);
 };

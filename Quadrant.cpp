@@ -64,7 +64,7 @@ double Quadrant::calculateIntensity()
 void Quadrant::applyInflueneceVector()
 {
 	for (int i = 0; i < particles.size(); i++)
-		particles[i]->addToDirectionVector(this->influenceVector->getEffectiveVector());
+		particles[i]->addToDirectionVector(this->influenceVector->getEffectiveVector(this->particles));
 }
 
 Quadrant::~Quadrant(void)
