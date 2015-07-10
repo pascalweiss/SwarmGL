@@ -1,4 +1,5 @@
 #include "Particle.h"
+#include "Globals.h"
 #include <iostream>
 
 Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen)
@@ -24,7 +25,7 @@ void Particle::init(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::ve
 	this->len = aLen;
 	setPeak(basePosVector);
 	setBasePositions(basePosVector, normVector);
-	this->velocity = 0.1;
+	this->velocity = VELOCITY;
 }
 
 void Particle::draw() 

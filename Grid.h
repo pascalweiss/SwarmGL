@@ -28,6 +28,8 @@ private:
 	void generateInfluenceVectors();
 	float getRandomFloat(float min, float max);
 	int getIndex(int absPos);
+	int getFloatAsAbsInt(float f);
 	glm::vec3 getRandomVector(float min, float max);
+	bool inGrid(Particle* p);
 };
 
