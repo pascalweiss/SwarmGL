@@ -4,6 +4,7 @@
 Particle::Particle(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::vec3 normVector, float aLen)
 {
 	this->init(basePosVector, aDirectionVector, normVector, aLen);
+	this->normVector = normVector;
 	
 }
 
@@ -23,7 +24,7 @@ void Particle::init(glm::vec3 basePosVector, glm::vec3 aDirectionVector, glm::ve
 	this->len = aLen;
 	setPeak(basePosVector);
 	setBasePositions(basePosVector, normVector);
-	this->velocity = 0.01;
+	this->velocity = 0.1;
 }
 
 void Particle::draw() 
@@ -39,12 +40,19 @@ void Particle::move()
 	/*std::vector<glm::vec3> tmp = Particle::getNextPosition();
 	for (int i = 0; i < 3; i++)
 		this->positionVector.at(i) = tmp.at(i);*/
-	for (int i = 0; i < 3; i++) 
+	/*for (int i = 0; i < 3; i++) 
 	{
-		int x = 0;
 		this->positionVector[i] = this->positionVector[i] + this->directionVector * 
 																	velocity;
-	}
+	}*/
+
+	this->basePositionVector += this->directionVector * velocity;
+	glm::vec3 norm = getUprightNormVector(this->directionVector);
+	setBasePositions(this->basePositionVector, norm);
+	setPeak(this->basePositionVector);
+
+
+	
 			
 	
 }
@@ -125,7 +133,8 @@ void Particle::generateParticle()
 
 void Particle::addToDirectionVector(glm::vec3 vector)
 {
-	this->directionVector += normalizeVector(vector);
+	//this->directionVector += normalizeVector(vector);
+	this->directionVector = normalizeVector(vector); 
 }
 
 glm::vec3 Particle::getDirectionVector()
@@ -138,7 +147,7 @@ void Particle::setPositionVector(std::vector<glm::vec3> vector)
 	this->positionVector = vector;
 }
 
-void Particle::setVelocity(double velocity)
+void Particle::setVelocity(float velocity)
 {
 	this->velocity = velocity;
 }
@@ -162,19 +171,21 @@ void Particle::setBasePositions(glm::vec3 basePosVector, glm::vec3 normVector)
 {
 	normVector = this->normalizeVector(normVector);
 	this->positionVector[0] = basePosVector + normVector * (len / 2);
-	this->positionVector[1] = basePosVector + normVector * (-len / 2);
+	this->positionVector[1] = basePosVector + normVector * (-len / 2);	
 }
 
 glm::vec3 Particle::normalizeVector(glm::vec3 toNormalize)
 {
-	if (toNormalize.x != 0 && toNormalize.y != 0 && toNormalize.z != 0) 
-		return glm::normalize(toNormalize);
-	return toNormalize;
+	if (toNormalize.x == 0 && toNormalize.y == 0 && toNormalize.z == 0) 
+		return toNormalize;	
+	return glm::normalize(toNormalize);
+	
 }
 
 glm::vec3 Particle::getUprightNormVector(glm::vec3 toNorm)
 {
-	return glm::vec3(0.0f, -(toNorm.z), toNorm.y);
+	glm::vec3 ret = glm::vec3(0.0f, -(toNorm.z), toNorm.y);
+	return ret;
 }
 
 Particle::~Particle(void)

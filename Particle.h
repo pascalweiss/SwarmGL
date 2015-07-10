@@ -29,7 +29,7 @@ public:
 	void generateParticle();
 	void addToDirectionVector(glm::vec3 vector);
 	void setPositionVector(std::vector<glm::vec3> vector);
-	void setVelocity(double velocity);
+	void setVelocity(float velocity);
 	void toggleReadyForDraw();
 	glm::vec3 getBasePosition();
 	glm::vec3 getDirectionVector();
@@ -44,5 +44,7 @@ private:
 	
 	glm::vec3 normalizeVector(glm::vec3 toNormalize);
 	glm::vec3 getUprightNormVector(glm::vec3 toNorm);
+
+	glm::vec3 normVector; //DEL
 };
 

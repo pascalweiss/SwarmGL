@@ -69,6 +69,7 @@ void KI::start() {
 		grid->registerParticles();
 
 		sendMVP();
+		grid->applyInfluenceVectors();
 		grid->drawParticles();
 		glfwSwapBuffers(window);
         glfwPollEvents();
