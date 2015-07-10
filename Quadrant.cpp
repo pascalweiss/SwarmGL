@@ -80,13 +80,19 @@ float Quadrant::getRandomFloat(float min, float max)
 	return min + f * (max - min);
 }
 
+int Quadrant::getRandomInt(int min, int max)
+{
+	return std::rand() % (int) max - min;
+}
+
 void Quadrant::applyInflueneceVector()
 {
 	
 	if (this->particles.size() >= THRESHOLD)
 	{
-		for (int i = 0; i < particles.size(); i++)
-			particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
+		if (getRandomInt(1, 20) == 20)
+			for (int i = 0; i < particles.size(); i++)
+				particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
 	}
 	else
 		for (int i = 0; i < particles.size(); i++)
@@ -95,5 +101,5 @@ void Quadrant::applyInflueneceVector()
 
 Quadrant::~Quadrant(void)
 {
-
+	delete coordinates;
 }

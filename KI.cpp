@@ -56,7 +56,7 @@ void KI::start() {
 		      0, // Eckpunkte direkt hintereinander gespeichert
 		      (void*) 0);
 	
-	for (;;) 
+	while(!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -74,6 +74,8 @@ void KI::start() {
 		grid->drawParticles();
 		glfwSwapBuffers(window);
         glfwPollEvents();
+		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LESS);
 	}
 }
 
@@ -85,4 +87,6 @@ void KI::sendMVP()
 
 KI::~KI(void)
 {
+	delete window;
+	
 }

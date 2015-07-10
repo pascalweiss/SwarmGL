@@ -101,6 +101,8 @@ void Grid::registerParticles()
 		p = particleVector[i];
 		if(inGrid(p))
 			quadrantVector[getIndex(v.x)][getIndex(v.y)][getIndex(v.z)]->addParticle(p);
+		
+			
 	}
 }
 

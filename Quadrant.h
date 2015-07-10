@@ -25,5 +25,6 @@ public:
 private:
 	glm::vec3 getPossibleDirections(Particle* p);
 	float getRandomFloat(float min, float max);
+	int getRandomInt(int min, int max);
 };
 
