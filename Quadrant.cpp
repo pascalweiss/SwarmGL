@@ -4,7 +4,7 @@
 #include <string>
 
 
-Quadrant::Quadrant(QuadrantCoordinates* coordinates, double locationIntensity)
+Quadrant::Quadrant(QuadrantCoordinates* coordinates, double locationIntensity):particles()
 {
 	this->coordinates = coordinates;
 	this->locationIntensity = locationIntensity;

@@ -63,15 +63,12 @@ void KI::start() {
 						   glm::vec3(0,0,0),  // and looks at the origin, Nullpunkt
 						   glm::vec3(0,1,0)); // Head is up (set to 0,-1,0 to look upside-down), sagt, wo oben ist
 											  // bzw ob der Betrachter sich in Schräglage befindet
-		
 		Model = glm::mat4(1.0f);
 		grid->moveParticles();
 		grid->clearQuadrants();
 		grid->registerParticles();
 		sendMVP();
 		grid->drawParticles();
-		
-				
 		glfwSwapBuffers(window);
         glfwPollEvents();
 	}

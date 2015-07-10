@@ -39,9 +39,12 @@ void Particle::move()
 	/*std::vector<glm::vec3> tmp = Particle::getNextPosition();
 	for (int i = 0; i < 3; i++)
 		this->positionVector.at(i) = tmp.at(i);*/
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++) 
+	{
+		int x = 0;
 		this->positionVector[i] = this->positionVector[i] + this->directionVector * 
 																	velocity;
+	}
 			
 	
 }
@@ -164,7 +167,9 @@ void Particle::setBasePositions(glm::vec3 basePosVector, glm::vec3 normVector)
 
 glm::vec3 Particle::normalizeVector(glm::vec3 toNormalize)
 {
-	return glm::normalize(toNormalize);
+	if (toNormalize.x != 0 && toNormalize.y != 0 && toNormalize.z != 0) 
+		return glm::normalize(toNormalize);
+	return toNormalize;
 }
 
 glm::vec3 Particle::getUprightNormVector(glm::vec3 toNorm)

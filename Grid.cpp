@@ -94,10 +94,12 @@ void Grid::clearQuadrants()
 void Grid::registerParticles() 
 {
 	glm::vec3 v;
+	Particle *p;
 	for (int i = 0; i < particleVector.size(); i++)
 	{	
 		v = particleVector[i]->getBasePosition();
-		quadrantVector[getIndex(v.x)][getIndex(v.y)][getIndex(v.z)]->addParticle(particleVector[i]);
+		p = particleVector[i];
+		quadrantVector[getIndex(v.x)][getIndex(v.y)][getIndex(v.z)]->addParticle(p);
 	}
 }
 
