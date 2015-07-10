@@ -67,6 +67,7 @@ void KI::start() {
 		grid->moveParticles();
 		grid->clearQuadrants();
 		grid->registerParticles();
+
 		sendMVP();
 		grid->drawParticles();
 		glfwSwapBuffers(window);

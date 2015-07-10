@@ -20,12 +20,12 @@ public:
 	void calculateNewParticlePositions();
 	void registerParticles();
 	void moveParticles();
+	void applyInfluenceVectors();
 	void drawParticles();
 	void clearQuadrants();
 	~Grid(void);
 private:
 	void generateInfluenceVectors();
-	void applyInfluenceVectors();
 	float getRandomFloat(float min, float max);
 	int getIndex(int absPos);
 	glm::vec3 getRandomVector(float min, float max);
