@@ -1,4 +1,6 @@
 #include "InfluenceVector.h"
+#include <vector>
+#include "Particle.h"
 
 InfluenceVector::InfluenceVector(double intensity, glm::vec3 vector)
 {
@@ -6,7 +8,7 @@ InfluenceVector::InfluenceVector(double intensity, glm::vec3 vector)
 	this->vector = vector;
 }
 
-glm::vec3 InfluenceVector::getEffectiveVector()
+glm::vec3 InfluenceVector(std::vector<Particle*> p)
 {
 	return glm::vec3(0, 0, 0);
 }
