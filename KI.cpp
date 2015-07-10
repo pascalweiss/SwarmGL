@@ -5,6 +5,7 @@
 #include "shader.hpp"
 #include "Grid.h"
 #include "objects.hpp"
+#include "Globals.h"
 
 
 KI::KI(void) {
@@ -46,7 +47,7 @@ void KI::initGLEW() {
 }
 
 void KI::start() {
-	Grid* grid = new Grid(5);
+	Grid* grid = new Grid(DIMENSION_LENGTH);
 	glEnableVertexAttribArray(0); // siehe layout im vertex shader: location = 0 
 	glVertexAttribPointer(0,  // location = 0 
 		      3,  // Datenformat vec3: 3 floats fuer xyz 

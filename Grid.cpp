@@ -48,7 +48,7 @@ double Grid::calculateLocationIntensity(int dimensionLength, QuadrantCoordinates
 	if (dimensionLength % 2 == 1) {
 		int maxCoordinate = (dimensionLength - 1) / 2;
 		double biggestCoordinate = coordinates->getBiggestAbsolute();
-		return biggestCoordinate / maxCoordinate;
+		return biggestCoordinate / maxCoordinate / 10;
 	}
 	return 0;
 }

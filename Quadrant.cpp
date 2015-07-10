@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Globals.h"
 #include <string>
-
+#include <time.h>
 
 Quadrant::Quadrant(QuadrantCoordinates* coordinates, double locationIntensity):particles()
 {
@@ -11,6 +11,7 @@ Quadrant::Quadrant(QuadrantCoordinates* coordinates, double locationIntensity):p
 	glm::vec3 v = glm::vec3(0.0,0.0,0.0);
 	this->influenceVector = new InfluenceVector(0, glm::vec3(0.0,0.0,0.0));
 	this->calculateInfluenceVector();
+	srand((unsigned) time(NULL));
 }
 
 std::vector<Particle> Quadrant::getParticles()
@@ -61,10 +62,35 @@ double Quadrant::calculateIntensity()
 	return this->locationIntensity + particle_influence;
 }
 
+glm::vec3 Quadrant::getPossibleDirections(Particle* p)
+{
+	float DimHalf = DIMENSION_LENGTH / 2;
+	float x = getRandomFloat(-DimHalf + p->getBasePosition().x, 
+							 DimHalf - p->getBasePosition().x);
+	float y = getRandomFloat(-DimHalf + p->getBasePosition().y, 
+							 DimHalf - p->getBasePosition().y);
+	float z = getRandomFloat(-DimHalf + p->getBasePosition().z, 
+							 DimHalf - p->getBasePosition().z);
+	return glm::vec3(x, y, z);
+}
+
+float Quadrant::getRandomFloat(float min, float max)
+{
+	float f = (float)rand() / RAND_MAX;
+	return min + f * (max - min);
+}
+
 void Quadrant::applyInflueneceVector()
 {
-	for (int i = 0; i < particles.size(); i++)
-		particles[i]->addToDirectionVector(this->influenceVector->getEffectiveVector(this->particles));
+	
+	if (this->particles.size() >= THRESHOLD)
+	{
+		for (int i = 0; i < particles.size(); i++)
+			particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
+	}
+	else
+		for (int i = 0; i < particles.size(); i++)
+			particles[i]->addToDirectionVector(this->influenceVector->getEffectiveVector(this->particles));
 }
 
 Quadrant::~Quadrant(void)

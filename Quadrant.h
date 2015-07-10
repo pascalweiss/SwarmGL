@@ -22,5 +22,8 @@ public:
 	void calculateInfluenceVector();
 	void applyInflueneceVector();
 	~Quadrant(void);
+private:
+	glm::vec3 getPossibleDirections(Particle* p);
+	float getRandomFloat(float min, float max);
 };
 

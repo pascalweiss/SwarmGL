@@ -25,7 +25,7 @@ glm::vec3 InfluenceVector::getEffectiveVector(std::vector<Particle*> p)
 {
 	glm::vec3 ret = this->vector * this->intensity;
 	for (int i = 0; i < p.size(); i++)
-		ret += p[i]->getDirectionVector() * (1 - intensity);
+		ret += p[i]->getDirectionVector() * ((1 - intensity) / p.size() * 10);
 	return normalizeVector(ret);
 }
 
