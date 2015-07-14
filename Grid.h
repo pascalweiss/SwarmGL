@@ -23,6 +23,7 @@ public:
 	void applyInfluenceVectors();
 	void drawParticles();
 	void clearQuadrants();
+    void clearParticleBuffers();
 	~Grid(void);
 private:
 	void generateInfluenceVectors();

@@ -170,6 +170,13 @@ void Grid::generateInfluenceVectors()
 	
 }
 
+void Grid::clearParticleBuffers()
+{
+    for (int i = 0; i < particleVector.size(); i++) {
+        particleVector[i]->clearBuffers();
+    }
+}
+
 float Grid::getRandomFloat(float min, float max)
 {
 	float f = (float)rand() / RAND_MAX;

@@ -83,6 +83,7 @@ void KI::start() {
         glfwPollEvents();
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
+        grid->clearParticleBuffers();
 	}
 }
 
