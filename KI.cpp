@@ -67,7 +67,7 @@ void KI::start() {
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-		View = glm::lookAt(glm::vec3(0,0,21), // Camera is at (0,0,-5), in World Space, Punkt d Betrachters
+		View = glm::lookAt(glm::vec3(0,0,17), // Camera is at (0,0,-5), in World Space, Punkt d Betrachters
 						   glm::vec3(0,0,0),  // and looks at the origin, Nullpunkt
 						   glm::vec3(0,1,0)); // Head is up (set to 0,-1,0 to look upside-down), sagt, wo oben ist
 											  // bzw ob der Betrachter sich in Schräglage befindet
