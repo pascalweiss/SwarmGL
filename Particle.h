@@ -13,6 +13,9 @@ private:
 	float velocity;
 	float len;
 	
+	GLuint vertexbuffer;
+	GLuint colorbuffer;
+
 	glm::vec3 directionVector;
 	GLuint vertexArrayIDParticle;
 	std::vector<glm::vec3> positionVector; //move all points when translate Particle
@@ -31,6 +34,7 @@ public:
 	void setPositionVector(std::vector<glm::vec3> vector);
 	void setVelocity(float velocity);
 	void toggleReadyForDraw();
+	void clearBuffers();
 	glm::vec3 getBasePosition();
 	glm::vec3 getDirectionVector();
 	std::vector<glm::vec3> getNextPosition();
