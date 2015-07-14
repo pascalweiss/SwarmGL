@@ -110,16 +110,16 @@ bool Grid::inGrid(Particle* p)
 {
 	glm::vec3 basePos = p->getBasePosition();
 	bool ret = true;
-	if (getFloatAsAbsInt(basePos.x) >= DIMENSION_LENGTH / 2 || 
-		getFloatAsAbsInt(basePos.y) >= DIMENSION_LENGTH / 2 ||
-		getFloatAsAbsInt(basePos.z) >= DIMENSION_LENGTH / 2)
+	if (getFloatAsAbsInt(basePos.x) > DIMENSION_LENGTH / 2 || 
+		getFloatAsAbsInt(basePos.y) > DIMENSION_LENGTH / 2 ||
+		getFloatAsAbsInt(basePos.z) > DIMENSION_LENGTH / 2)
 		ret = false;
 	return ret;
 }
 
 int Grid::getFloatAsAbsInt(float f)
 {
-	int ret = f / 1;
+	int ret = f;//f / 1;
 	if (ret < 0)
 		return ret * -1;
 	return ret;

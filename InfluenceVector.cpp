@@ -23,6 +23,8 @@ void InfluenceVector::setIntensity(double i)
 
 glm::vec3 InfluenceVector::getEffectiveVector(std::vector<Particle*> p)
 {
+	if (this->intensity >= 0.1)
+		return this->vector;
 	glm::vec3 ret = this->vector * this->intensity;
 	for (int i = 0; i < p.size(); i++)
 		ret += p[i]->getDirectionVector() * ((1 - intensity) / p.size() * 10);
