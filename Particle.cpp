@@ -89,7 +89,7 @@ void Particle::generateParticle()
 	glGenBuffers(1, &vertexbuffer);
 	
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_DYNAMIC_DRAW);
 
 	//Farbwerte des Partikels, mal sehen wies wird
 	static const GLfloat g_color_buffer_data[] = 
@@ -101,7 +101,7 @@ void Particle::generateParticle()
 
 	glGenBuffers(1, &colorbuffer); //Adresse des Buffers anfordern
 	glBindBuffer(GL_ARRAY_BUFFER, colorbuffer); //Aufruf: angeforderten Buffer benutzen
-	glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STATIC_DRAW); //Daten für den Buffer definieren, Größe, Flag: Daten werden sich wohl nicht ändern
+	glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_DYNAMIC_DRAW); //Daten für den Buffer definieren, Größe, Flag: Daten werden sich wohl nicht ändern
 
 	glEnableVertexAttribArray(0); // Kein Disable ausführen ! In Sepeicherbereich 0 des Shaders schreiben
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);

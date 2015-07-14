@@ -47,7 +47,7 @@ void Quadrant::calculateInfluenceVector()
 double Quadrant::calculateIntensity() 
 {
 	double particle_influence = (double)this->particles.size() * PARTICLE_INFLUENCE;
-	if (DEBUG) {
+	if (DEBUG_FLAG) {
 		std::cout 
 			<< "Q(" 
 			<< this->coordinates->getX() 
