@@ -69,9 +69,6 @@ std::vector<glm::vec3> Particle::getNextPosition() //NR
 
 void Particle::generateParticle()
 {
-	GLuint vertexbuffer;
-	GLuint colorbuffer;
-	
 	glGenVertexArrays(1, &vertexArrayIDParticle); //Erzeuge VertexArrayObjekt
 	glBindVertexArray(vertexArrayIDParticle); //Binde das erzeugte Objekt
 	
@@ -130,6 +127,12 @@ void Particle::generateParticle()
 	);
 	
 	//glBindVertexArray(0);
+}
+
+void Particle::clearBuffers()
+{
+	glDeleteBuffers(1, &vertexbuffer);
+	glDeleteBuffers(1, &colorbuffer);
 }
 
 void Particle::addToDirectionVector(glm::vec3 vector)
