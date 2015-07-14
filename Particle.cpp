@@ -131,6 +131,7 @@ void Particle::generateParticle()
 
 void Particle::clearBuffers()
 {
+    glDeleteVertexArrays(1, &vertexArrayIDParticle);
 	glDeleteBuffers(1, &vertexbuffer);
 	glDeleteBuffers(1, &colorbuffer);
 }
