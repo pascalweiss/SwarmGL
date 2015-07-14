@@ -42,9 +42,16 @@ float QuadrantCoordinates::getZ()
 }
 
 float QuadrantCoordinates::getBiggestAbsolute() {
-	float biggest = abs(this->x);
-	float absY = abs(this->y);
-	float absZ = abs(this->z);
+#ifdef __APPLE__ || __MACH__
+	float biggest = fabs(this->x);
+	float absY = fabs(this->y);
+	float absZ = fabs(this->z);
+#else
+    float biggest = abs(this->x);
+    float absY = abs(this->y);
+    float absZ = abs(this->z);
+
+#endif
 	if (absY > biggest) {
 		biggest = absY;
 	}

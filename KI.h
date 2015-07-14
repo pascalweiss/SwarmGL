@@ -16,7 +16,7 @@ private:
 	void initGLFW();
 	void initGLEW();
 	void sendMVP();
-	static void KI::error_callback(int error, const char* description) {
+	static void error_callback(int error, const char* description) {
 		fputs(description, stderr);
 	}
 	void start();

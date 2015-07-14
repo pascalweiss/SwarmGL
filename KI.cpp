@@ -28,6 +28,13 @@ void KI::initGLFW() {
         fprintf(stderr, "Failed to initialize GLFW\n");
         exit(EXIT_FAILURE);
     }
+#ifdef __APPLE__ || __MACH__
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwSetErrorCallback(KI::error_callback);
+#endif
 	glfwSetErrorCallback(KI::error_callback);
 	window = glfwCreateWindow(1024, 768, "SwarmGL", NULL, NULL);
     if (!window) {
