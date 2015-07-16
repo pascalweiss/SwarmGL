@@ -1,4 +1,4 @@
-#include "KI.h"
+#include "SwarmGLFacade.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -8,22 +8,22 @@
 #include "Globals.h"
 
 
-KI::KI(void) {
+SwarmGLFacade::SwarmGLFacade(void) {
 	this->init();
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	programID = LoadShaders("TransformVertexShader.vertexshader", "ColorFragmentShader.fragmentshader");
+    programID = LoadShaders("StandardShading.vertexshader", "StandardShading.fragmentshader");
     glUseProgram(programID);
 	this->start();
 }
 
-void KI::init() {
+void SwarmGLFacade::init() {
     initGLFW();
 	initGLEW();
 }
 
-void KI::initGLFW() {
+void SwarmGLFacade::initGLFW() {
 	if (!glfwInit()) {
         fprintf(stderr, "Failed to initialize GLFW\n");
         exit(EXIT_FAILURE);
@@ -33,9 +33,9 @@ void KI::initGLFW() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwSetErrorCallback(KI::error_callback);
+    glfwSetErrorCallback(SwarmGLFacade::error_callback);
 #endif
-	glfwSetErrorCallback(KI::error_callback);
+	glfwSetErrorCallback(SwarmGLFacade::error_callback);
 	window = glfwCreateWindow(1024, 768, "SwarmGL", NULL, NULL);
     if (!window) {
         glfwTerminate();
@@ -45,7 +45,7 @@ void KI::initGLFW() {
     glfwMakeContextCurrent(window);
 }
 
-void KI::initGLEW() {
+void SwarmGLFacade::initGLEW() {
 	glewExperimental = true; // Needed for core profile
     if (glewInit() != GLEW_OK) {
         fprintf(stderr, "Failed to initialize GLEW\n");
@@ -53,7 +53,7 @@ void KI::initGLEW() {
     }
 }
 
-void KI::start() {
+void SwarmGLFacade::start() {
 	Grid* grid = new Grid(DIMENSION_LENGTH);
 	glEnableVertexAttribArray(0); // siehe layout im vertex shader: location = 0 
 	glVertexAttribPointer(0,  // location = 0 
@@ -87,13 +87,13 @@ void KI::start() {
 	}
 }
 
-void KI::sendMVP()
+void SwarmGLFacade::sendMVP()
 {
 	glm::mat4 MVP = Projection * View * Model; 
 	glUniformMatrix4fv(glGetUniformLocation(programID, "MVP"), 1, GL_FALSE, &MVP[0][0]);
 }
 
-KI::~KI(void)
+SwarmGLFacade::~SwarmGLFacade(void)
 {
 	delete window;
 	

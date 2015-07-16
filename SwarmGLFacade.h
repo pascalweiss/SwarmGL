@@ -4,7 +4,13 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <iostream>
-class KI
+
+/**
+ 
+ 
+*/
+
+class SwarmGLFacade
 {
 private:
 	GLuint programID;
@@ -21,7 +27,7 @@ private:
 	}
 	void start();
 public:
-	KI(void);
-	~KI(void);
+	SwarmGLFacade(void);
+	~SwarmGLFacade(void);
 };
 
