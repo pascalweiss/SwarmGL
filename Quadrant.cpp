@@ -32,7 +32,6 @@ void Quadrant::clearParticles()
 void Quadrant::setParticles(std::vector<Particle*> particles)
 {
 	this->particles = particles;
-	this->calculateIntensity();
 }
 
 void Quadrant::calculateInfluenceVector()
@@ -46,7 +45,7 @@ void Quadrant::calculateInfluenceVector()
 
 double Quadrant::calculateIntensity() 
 {
-	double particle_influence = (double)this->particles.size() * PARTICLE_INFLUENCE;
+	double particle_influence = (double)this->particles.size();
 	if (DEBUG_FLAG) {
 		std::cout 
 			<< "Q(" 
@@ -88,15 +87,23 @@ int Quadrant::getRandomInt(int min, int max)
 void Quadrant::applyInflueneceVector()
 {
 	
-	if (this->particles.size() >= THRESHOLD)
+	if (this->particles.size() >= PANIC_THRESHOLD)
 	{
-		if (getRandomInt(1, 20) == 20)
-			for (int i = 0; i < particles.size(); i++)
+        if (getRandomInt(0, PANIC_PROBABILITY) == 1) {
+            for (int i = 0; i < particles.size(); i++) {
+                particles[i]->setVelocity(PANIC_VELOCITY);
 				particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
-	}
-	else
-		for (int i = 0; i < particles.size(); i++)
-			particles[i]->addToDirectionVector(this->influenceVector->getEffectiveVector(this->particles));
+            }
+        }
+    }
+    else {
+        glm::vec3 effectiveVector = this->influenceVector->getEffectiveVector(this->particles);
+        for (int i = 0; i < particles.size(); i++) {
+            particles[i]->setVelocity(VELOCITY);
+			particles[i]->addToDirectionVector(effectiveVector);
+    
+        }
+    }
 }
 
 Quadrant::~Quadrant(void)

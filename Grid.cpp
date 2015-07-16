@@ -61,8 +61,7 @@ void Grid::initParticles()
 	for (int i = 0; i < NUMBER_OF_PARTICLES; i++) 
 	{
 		particleVector.push_back(new Particle(getRandomVector(min, max), 
-											  getRandomVector(min, max), 
-											  PARTICLE_LENGTH));
+											  getRandomVector(min, max)));
 	}
 }
 
@@ -71,10 +70,6 @@ Quadrant* Grid::getQuadrantAt(int x, int y, int z)
 	return this->quadrantVector[x][y][z];
 }
 
-void Grid::calculateNewParticlePositions()
-{
-
-}
 
 void Grid::clearQuadrants() 
 {
