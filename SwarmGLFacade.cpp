@@ -6,12 +6,12 @@
 #include "Grid.h"
 #include "objects.hpp"
 #include "Globals.h"
-#include "GlobalsLoader.h"
+//#include "GlobalsLoader.h"
 #include <time.h>
 
 
 SwarmGLFacade::SwarmGLFacade(void) {
-    GlobalsLoader::loadGlobals();
+    //GlobalsLoader::loadGlobals();
 	this->init();
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -76,11 +76,11 @@ void SwarmGLFacade::start() {
 	{
         
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        iteration_count++;
+        /*iteration_count++;
         if (iteration_count == 100) {
             iteration_count = 0;
             GlobalsLoader::loadGlobals();
-        }
+        }*/
 		Projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
 		grid->moveParticles();
 		grid->clearQuadrants();

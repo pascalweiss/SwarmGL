@@ -17,7 +17,7 @@
   Initial value for the number of particles. 
   Can't be changed on runtime
  */
-int NUMBER_OF_PARTICLES = 2000;
+int NUMBER_OF_PARTICLES = 800;
 
  /**
   Initial value for the number of quadrants 
@@ -27,7 +27,7 @@ int NUMBER_OF_PARTICLES = 2000;
   particles are allowed to move. Can't be 
   changed on runtime
   */
-int DIMENSION_LENGTH = 41;
+int DIMENSION_LENGTH = 13;
 
  /**
   The length of the particles. Can be changed
@@ -56,13 +56,13 @@ int PANIC_THRESHOLD = 11;
  The speed of the particle.
  Can be changed on runtime.
  */
-float VELOCITY = 0.1;
+float VELOCITY = 0.2;
 
 /**
  The speed of the particle, when it is in panic 
  mode. Can be changed on runtime.
  */
-float PANIC_VELOCITY = 0.5;
+float PANIC_VELOCITY = 0.3;
 
 /**
  Low value makes the particles attract more to each
@@ -70,7 +70,7 @@ float PANIC_VELOCITY = 0.5;
  makes them spread wider over the space.
  Can be changed on runtime.
  */
-float OPENNESS = 10;
+float OPENNESS = 8;
 
 /**
  With a low value, it is very likely, that they panic, 
@@ -79,7 +79,7 @@ float OPENNESS = 10;
  reached. 
  Can be changed on runtime.
  */
-int PANIC_PROBABILITY = 15;
+int PANIC_PROBABILITY = 1500;
 
 
 int main(void) {

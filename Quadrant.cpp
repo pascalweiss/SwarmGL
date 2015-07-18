@@ -87,13 +87,11 @@ int Quadrant::getRandomInt(int min, int max)
 void Quadrant::applyInflueneceVector()
 {
 	
-	if (this->particles.size() >= PANIC_THRESHOLD)
+	if (this->particles.size() >= PANIC_THRESHOLD && getRandomInt(0, PANIC_PROBABILITY) == 1)
 	{
-        if (getRandomInt(0, PANIC_PROBABILITY) == 1) {
-            for (int i = 0; i < particles.size(); i++) {
-                particles[i]->setVelocity(PANIC_VELOCITY);
-				particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
-            }
+        for (int i = 0; i < particles.size(); i++) {
+            particles[i]->setVelocity(PANIC_VELOCITY);
+			particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
         }
     }
     else {
