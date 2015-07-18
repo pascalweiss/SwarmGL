@@ -8,13 +8,13 @@
 #include "Globals.h"
 #include <time.h>
 
-#if __cplusplus >=199711L
+#if __cplusplus >=201103L 
     #include "GlobalsLoader.h"
 #endif
 
 
 SwarmGLFacade::SwarmGLFacade(void) {
-    #if __cplusplus >=199711L
+    #if __cplusplus >=201103L 
         GlobalsLoader::loadGlobals();
     #endif
 	this->init();
@@ -81,7 +81,7 @@ void SwarmGLFacade::start() {
 	{
         
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        #if __cplusplus >=199711L
+        #if __cplusplus >=201103L 
             iteration_count++;
             if (iteration_count == 100) {
                 iteration_count = 0;
