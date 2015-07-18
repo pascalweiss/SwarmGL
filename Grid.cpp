@@ -39,7 +39,6 @@ void Grid::addQuadrant(int x, int y, int z, int dimensionLength) {
 						(float)y + startCoordinate, 
 						(float)z + startCoordinate);
 		double locationIntensity = this->calculateLocationIntensity(dimensionLength, coordinates);
-        std::cout << locationIntensity << std::endl;
 		this->quadrantVector[x][y].push_back(new Quadrant(coordinates, locationIntensity));
 	} 
 }
@@ -56,7 +55,6 @@ double Grid::calculateLocationIntensity(int dimensionLength, QuadrantCoordinates
 
 void Grid::initParticles()
 {
-	Particle* particle;
 	float max = DIMENSION_LENGTH / 2;
 	float min = -max;
 	for (int i = 0; i < NUMBER_OF_PARTICLES; i++) 
