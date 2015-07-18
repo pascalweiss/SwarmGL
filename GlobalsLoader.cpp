@@ -78,8 +78,8 @@ void GlobalsLoader::loadGlobals() {
         else if (strcmp(i->key, "OPENNESS") == 0) {
             OPENNESS = (float)i->value.toNumber();
         }
-        else if (strcmp(i->key, "PANIC_PROBABILITY") == 0) {
-            PANIC_PROBABILITY = (float)i->value.toNumber();
+        else if (strcmp(i->key, "PANIC_DAMPING") == 0) {
+            PANIC_DAMPING = (float)i->value.toNumber();
         }
     }
 }

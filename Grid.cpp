@@ -39,6 +39,7 @@ void Grid::addQuadrant(int x, int y, int z, int dimensionLength) {
 						(float)y + startCoordinate, 
 						(float)z + startCoordinate);
 		double locationIntensity = this->calculateLocationIntensity(dimensionLength, coordinates);
+        std::cout << locationIntensity << std::endl;
 		this->quadrantVector[x][y].push_back(new Quadrant(coordinates, locationIntensity));
 	} 
 }
@@ -48,7 +49,7 @@ double Grid::calculateLocationIntensity(int dimensionLength, QuadrantCoordinates
 	if (dimensionLength % 2 == 1) {
 		int maxCoordinate = (dimensionLength - 1) / 2;
 		double biggestCoordinate = coordinates->getBiggestAbsolute();
-		return biggestCoordinate / maxCoordinate / 10;
+		return biggestCoordinate / maxCoordinate / OPENNESS;
 	}
 	return 0;
 }
@@ -158,12 +159,6 @@ Grid::~Grid(void)
 	particleVector.clear();
 }
 
-
-//private Methods
-void Grid::generateInfluenceVectors()
-{
-	
-}
 
 void Grid::clearParticleBuffers()
 {

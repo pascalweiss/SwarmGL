@@ -86,12 +86,30 @@ int Quadrant::getRandomInt(int min, int max)
 
 void Quadrant::applyInflueneceVector()
 {
-	
-	if (this->particles.size() >= PANIC_THRESHOLD && getRandomInt(0, PANIC_PROBABILITY) == 1)
-	{
-        for (int i = 0; i < particles.size(); i++) {
+    /*
+    Alternative Algorithm
+    
+    glm::vec3 effectiveVector = this->influenceVector->getEffectiveVector(this->particles);
+    for (int i = 0; i < particles.size(); i++) {
+        if (this->particles.size() >= PANIC_THRESHOLD && getRandomInt(0, PANIC_DAMPING) == 1)
+        {
             particles[i]->setVelocity(PANIC_VELOCITY);
-			particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
+            particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
+        }
+        else {
+            particles[i]->setVelocity(VELOCITY);
+            particles[i]->addToDirectionVector(effectiveVector);
+        }
+    }
+     */
+    
+	
+    if (this->particles.size() >= PANIC_THRESHOLD) {
+        if (getRandomInt(0, PANIC_DAMPING) == 1) {
+            for (int i = 0; i < particles.size(); i++) {
+                particles[i]->setVelocity(PANIC_VELOCITY);
+                particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
+            }
         }
     }
     else {

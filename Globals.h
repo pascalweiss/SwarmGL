@@ -80,4 +80,4 @@ extern float OPENNESS;
  reached.
  Can be changed on runtime.
  */
-extern int PANIC_PROBABILITY;
+extern int PANIC_DAMPING;

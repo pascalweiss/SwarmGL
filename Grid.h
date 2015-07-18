@@ -78,7 +78,6 @@ private:
     void initParticles();
     void addQuadrant(int x, int y, int z, int dimensionLength);
     double calculateLocationIntensity(int dimensionLength, QuadrantCoordinates * coordinates);
-	void generateInfluenceVectors();
 	float getRandomFloat(float min, float max);
 	int getIndex(int absPos);
 	int getFloatAsAbsInt(float f);
