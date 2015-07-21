@@ -103,12 +103,20 @@ void Quadrant::applyInflueneceVector()
     }
      */
     
-	
     if (this->particles.size() >= PANIC_THRESHOLD) {
         if (getRandomInt(0, PANIC_DAMPING) == 1) {
             for (int i = 0; i < particles.size(); i++) {
                 particles[i]->setVelocity(PANIC_VELOCITY);
                 particles[i]->addToDirectionVector(getPossibleDirections(this->particles[i]));
+            }
+        }
+        
+        else if (MODE == 1) {
+            glm::vec3 effectiveVector = this->influenceVector->getEffectiveVector(this->particles);
+            for (int i = 0; i < particles.size(); i++) {
+                particles[i]->setVelocity(VELOCITY);
+                particles[i]->addToDirectionVector(effectiveVector);
+                
             }
         }
     }

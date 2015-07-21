@@ -13,6 +13,10 @@
  'Globals.json'
  */
 
+/**
+    TODO
+ */
+int MODE = 1;
  /**
   Initial value for the number of particles. 
   Can't be changed on runtime

@@ -46,7 +46,7 @@ void Grid::addQuadrant(int x, int y, int z, int dimensionLength) {
 double Grid::calculateLocationIntensity(int dimensionLength, QuadrantCoordinates * coordinates) 
 {
 	if (dimensionLength % 2 == 1) {
-		int maxCoordinate = (dimensionLength - 1) / 2;
+		double maxCoordinate = ((double)dimensionLength - 1) / 2;
 		double biggestCoordinate = coordinates->getBiggestAbsolute();
 		return biggestCoordinate / maxCoordinate / OPENNESS;
 	}

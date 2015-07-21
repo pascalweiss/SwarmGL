@@ -81,6 +81,9 @@ void GlobalsLoader::loadGlobals() {
         else if (strcmp(i->key, "PANIC_DAMPING") == 0) {
             PANIC_DAMPING = (float)i->value.toNumber();
         }
+        else if (strcmp(i->key, "MODE") == 0) {
+            MODE = (int)i->value.toNumber();
+        }
     }
 }
 

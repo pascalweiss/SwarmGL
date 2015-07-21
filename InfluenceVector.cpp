@@ -1,5 +1,6 @@
 #include "InfluenceVector.h"
 #include "Globals.h"
+#include <iostream>
 
 
 InfluenceVector::InfluenceVector(double intensity, glm::vec3 vector)
